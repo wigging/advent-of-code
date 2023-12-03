@@ -3,27 +3,22 @@ Day 1 for Advent of Code 2023.
 """
 
 
-def get_lines(text_file):
+def get_line(text_file):
     """
-    Return a list of all lines in a text file.
+    Yield a line from the text file.
     """
-    lines = []
-
     with open(text_file) as file:
         for line in file:
-            lines.append(line.rstrip())
-
-    return lines
+            yield line.rstrip()
 
 
 def run_part1(text_file):
     """
     Run the example or entire problem for part 1.
     """
-    lines = get_lines(text_file)
     total = 0
 
-    for line in lines:
+    for line in get_line(text_file):
         digits = []
 
         for c in line:
@@ -41,12 +36,11 @@ def run_part2(text_file):
     """
     Run the example or entire problem for part 2.
     """
-    lines = get_lines(text_file)
     total = 0
     words = {'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5',
              'six': '6', 'seven': '7', 'eight': '8', 'nine': '9'}
 
-    for line in lines:
+    for line in get_line(text_file):
         digits = []
 
         for idx, c in enumerate(line):

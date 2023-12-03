@@ -3,17 +3,13 @@ Day 2 for Advent of Code 2023.
 """
 
 
-def get_lines(text_file):
+def get_line(text_file):
     """
-    Return a list of all lines in a text file.
+    Yield a line from the text file.
     """
-    lines = []
-
     with open(text_file) as file:
         for line in file:
-            lines.append(line.rstrip())
-
-    return lines
+            yield line.rstrip()
 
 
 def run_part1(text_file):
@@ -23,9 +19,7 @@ def run_part1(text_file):
     max_number = {'red': 12, 'green': 13, 'blue': 14}
     possible_games = []
 
-    lines = get_lines(text_file)
-
-    for line in lines:
+    for line in get_line(text_file):
 
         game = line.split(': ')[0]
         game_id = int(game.split(' ')[1])
@@ -55,9 +49,8 @@ def run_part2(text_file):
     Run the example or entire problem for part 2.
     """
     powers = []
-    lines = get_lines(text_file)
 
-    for line in lines:
+    for line in get_line(text_file):
         subsets = line.split(': ')[1].split('; ')
 
         reds = []
