@@ -44,12 +44,11 @@ def run_part2(text_file):
     """
     Run the example or entire problem for part 2.
     """
-    scratchcards = {}
+    scratchcards = []
 
-    # Create scratchcards dict where initial value is 1
-    for line in get_line(text_file):
-        card = line.split(': ')[0].split()[1]
-        scratchcards[card] = 1
+    # Create scratchcards list with initial values of 1
+    for _ in get_line(text_file):
+        scratchcards.append(1)
 
     # Process scratchcard originals and copies
     for line in get_line(text_file):
@@ -66,9 +65,9 @@ def run_part2(text_file):
         n_matches = len(matches)
 
         for n in range(n_matches):
-            scratchcards[str(card_number+1+n)] += scratchcards[card]
+            scratchcards[card_number+1+n] += scratchcards[card_number]
 
-    scratchcards_sum = sum(scratchcards.values())
+    scratchcards_sum = sum(scratchcards)
     print(f'Part 2 answer -> {scratchcards_sum}')
 
 
